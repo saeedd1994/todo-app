@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'todo-app';
+  todosList:any=[];
+
+  addTodo(todo:string){
+
+    this.todosList=
+    [...this.todosList,
+    { key:Date.now(),
+      text:todo,
+      done:false}]
+    console.log(this.todosList);
+  }
 }
