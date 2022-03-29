@@ -12,6 +12,7 @@
       <app-todo-item *ngFor="let todo of todos"
       [todosItem]="todo"
       (delete)="deleteTodo($event)"
+      (done)="toggleTodo($event)"
       class="col-6 mb-2"></app-todo-item>
     </div>
   </div>

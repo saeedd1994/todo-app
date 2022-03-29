@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { isNgTemplate } from '@angular/compiler';
+import { Component, IterableDiffers } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -20,5 +21,20 @@ export class AppComponent {
   deleteTodo(key:Date)
   {
     this.todosList=this.todosList.filter((item)=>item.key!==key)
+  }
+
+  toggleTodo(key:Date)
+  {
+   this.todosList=this.todosList.map(item=>
+   {
+     if(item.key===key)
+     {
+       return{
+         ...item,
+         done:!item.done
+       }
+     }
+     return item
+   })
   }
 }
