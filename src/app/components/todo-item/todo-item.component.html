@@ -1,9 +1,9 @@
 <div class="d-flex justify-content-between align-items-center border rounded p-3">
   <div>
-    hello roocket
+    {{todo.text}}
   </div>
   <div>
     <button type="button" class="btn btn-info btn-sm">edit</button>
-    <button type="button" class="btn btn-danger btn-sm ml-1">delete</button>
+    <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteTodo(todo.key)">delete</button>
   </div>
 </div>

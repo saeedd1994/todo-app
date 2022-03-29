@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-todos',
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.scss']
 })
-export class TodosComponent implements OnInit {
+export class TodosComponent  {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  @Input() todos!:Array<{key:Date,text:string,done:boolean}>;
+  @Output() delete=new EventEmitter<Date>()
+  deleteTodo(key:Date)
+  {
+    this.delete.emit(key)
   }
-
 }

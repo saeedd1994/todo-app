@@ -9,7 +9,10 @@
               class="badge badge-success">9</span></a>
         </div>
       </nav>
-      <app-todo-item class="col-6 mb-2"></app-todo-item>
+      <app-todo-item *ngFor="let todo of todos"
+      [todosItem]="todo"
+      (delete)="deleteTodo($event)"
+      class="col-6 mb-2"></app-todo-item>
     </div>
   </div>
 </div>

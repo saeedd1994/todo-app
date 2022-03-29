@@ -6,15 +6,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  todosList:any=[];
+  todosList:Array<any>=[];
 
   addTodo(todo:string){
 
     this.todosList=
     [...this.todosList,
-    { key:Date.now(),
+    { key:Date.now(), 
       text:todo,
-      done:false}]
-    console.log(this.todosList);
+      done:false}]  
+  }
+
+  deleteTodo(key:Date)
+  {
+    this.todosList=this.todosList.filter((item)=>item.key!==key)
   }
 }
