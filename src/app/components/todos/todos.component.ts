@@ -7,6 +7,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class TodosComponent  {
 
+  doneStatus:boolean=false
+
   @Input() todos!:Array<{key:Date,text:string,done:boolean}>;
   @Output() delete=new EventEmitter<Date>()
   @Output() done=new EventEmitter<Date>()
@@ -21,5 +23,19 @@ export class TodosComponent  {
   }
   editHandler(todo:{key:Date,text:string}){
     this.edit.emit(todo)
+  }
+
+  get filterTodos()
+  {
+    return this.todos.filter(item=>item.done===this.doneStatus)
+  }
+
+  get doneTodos()
+  {
+    return this.todos.filter(item=>item.done===true)
+  }
+  get udoneTodos()
+  {
+    return this.todos.filter(item=>item.done===false)
   }
 }
