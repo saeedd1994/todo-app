@@ -1,3 +1,6 @@
 <app-header></app-header>
 <app-add-to-do (add)="addTodo($event)"></app-add-to-do>
-<app-todos [todos]="todosList" (delete)="deleteTodo($event)" (done)="toggleTodo($event)"></app-todos>
+<app-todos  [todos]="todosList"
+            (delete)="deleteTodo($event)"
+            (done)="toggleTodo($event)"
+            (edit)="editHandler($event)"></app-todos>

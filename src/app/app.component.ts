@@ -1,6 +1,4 @@
-import { isNgTemplate } from '@angular/compiler';
-import { Component, IterableDiffers } from '@angular/core';
-
+import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -36,5 +34,18 @@ export class AppComponent {
      }
      return item
    })
+  }
+
+  editHandler(todos:{key:Date,text:string}){
+   
+    this.todosList=this.todosList.map(item=>
+      {
+        if(item.key==todos.key)
+        {
+          return {...item,
+                  text:todos.text}
+        }
+        return item
+      })
   }
 }

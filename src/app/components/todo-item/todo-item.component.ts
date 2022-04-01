@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input,Output } from '@angular/core';
+import { Component, EventEmitter, Input,Output, TemplateRef,CUSTOM_ELEMENTS_SCHEMA,NgModule } from '@angular/core';
 
 @Component({
   selector: 'app-todo-item',
@@ -7,9 +7,12 @@ import { Component, EventEmitter, Input,Output } from '@angular/core';
 })
 export class TodoItemComponent {
 
+  editStatus:boolean=false;
+  editTodo: TemplateRef<any>|null = null;
   @Input('todosItem') todo!:{key:Date,text:string,done:boolean};
   @Output() delete=new EventEmitter<Date>();
   @Output() done=new EventEmitter<Date>();
+  @Output() edit=new EventEmitter<{key:Date,text:string}>()
 
   deleteTodo(key:Date)
   {
@@ -19,4 +22,10 @@ export class TodoItemComponent {
   {
     this.done.emit(key)
   }
+
+  editHandler(key:Date,text:string)
+  {
+    this.edit.emit({key,text})
+  }
+  
 }
